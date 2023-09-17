@@ -3,24 +3,24 @@
 
 #include <random>
 class chip8 {
-  private:
+  public:
     unsigned short opcode;
-    unsigned char memory[4096] = {0};
+    unsigned char memory[4096] {0};
     unsigned char V[16] = {0};
     unsigned short I;
     unsigned short pc;
 
-    unsigned char display[64 * 32] = {0};
+    uint32_t display[64 * 32] {0};
 
     unsigned char delay_timer;
     unsigned char sound_timer;
 
     unsigned short stack[16] = {0};
-    unsigned short sp;
+    unsigned char sp;
+    bool drawing = false;
 
-    unsigned char key[16];
+    unsigned char key[16] = {0};
 
-  public:
     std::default_random_engine randGen;
     std::uniform_int_distribution<unsigned char> randByte;
     chip8();
